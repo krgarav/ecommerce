@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Nav, Navbar, Container, Form } from "react-bootstrap";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <Navbar bg="black" variant="dark" style={{ position: "sticky", top: 0 }}>
       <Container className="justify-content-center">
@@ -18,7 +18,7 @@ const Header = () => {
         </Nav>
       </Container>
       <Form>
-        <Button variant="outline-primary">
+        <Button variant="outline-primary" onClick={props.onClick}>
           Cart <span>0</span>
         </Button>
       </Form>

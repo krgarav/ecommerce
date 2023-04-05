@@ -10,7 +10,7 @@ import {
   Navbar,
   Nav,
 } from "react-bootstrap";
-const Body = () => {
+const Body = (props) => {
   const items = Items.map((item) => {
     return (
       <Col key={item.title} xl={6}>
@@ -46,7 +46,7 @@ const Body = () => {
         <Row>{items}</Row>
       </Container>
       <Container className="text-center">
-        <Button>See the cart</Button>
+        <Button onClick={props.onClick}>See the cart</Button>
       </Container>
     </>
   );
