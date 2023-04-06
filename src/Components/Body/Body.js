@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Items from "../Items/Items";
 import {
   Container,
@@ -10,19 +10,36 @@ import {
   Navbar,
   Nav,
 } from "react-bootstrap";
+import CartContext from "../../Store/cart-context";
 const Body = (props) => {
+  const cartCtx = useContext(CartContext);
+
+
+  const addToCartHandler = (event) => {
+    const title=event.target.parentNode.parentNode.parentNode.children[0].innerText;
+    const url = event.target.parentNode.parentNode.parentNode.children[1].src;
+    const Price = event.target.parentNode.parentNode.children[0].innerText;
+
+    const imgObj={
+      title: title,
+      url:url,
+      price:Price
+    }
+    cartCtx.addToCartItems(imgObj);
+  };
   const items = Items.map((item) => {
     return (
       <Col key={item.title} xl={6}>
-        
-        <h3>{item.title}</h3>
+        <h1>{item.title}</h1>
+
         <Image src={item.imageUrl} />
+
         <div className="justify-content-between">
           {" "}
           <span>Rs {item.price}/-</span>
           <span>
             {" "}
-            <Button>Add to Cart</Button>
+            <Button onClick={addToCartHandler}>Add to Cart</Button>
           </span>
         </div>
       </Col>
@@ -33,13 +50,13 @@ const Body = (props) => {
     <>
       <div
         style={{
-          "background-color": "grey",
+          backgroundColor: "grey",
           height: "150px",
           textAlign: "center",
-          "font-size": "20px",
+          fontSize: "20px",
         }}
       >
-        <h1 style={{ "font-size": "80px" }}>The Generics</h1>
+        <h1 style={{ fontSize: "80px" }}>The Generics</h1>
       </div>
 
       <Container className="text-center">

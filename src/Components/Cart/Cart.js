@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   CloseButton,
@@ -8,24 +8,32 @@ import {
   ListGroup,
   Row,
 } from "react-bootstrap";
-import Items from "../Items/Items";
+
+import CartContext from "../../Store/cart-context";
 
 const Cart = (props) => {
-  const allItems = Items.map((item) => {
+  const cartCtx = useContext(CartContext);
+  const onRemoveHandler = (event) => {
+    const title =
+      event.target.parentNode.parentNode.firstChild.children[1].innerText;
+    cartCtx.removeFromCartItems(title);
+  };
+  const allItems = cartCtx.cartItems.map((item) => {
+    console.log(item.quantity)
     return (
       <ListGroup.Item>
         <Container>
           <Row>
             <Col>
-              <Image src={item.imageUrl} thumbnail />
-              <p>{item.title}</p>
+              <Image src={item[0].url} thumbnail />
+              <p>{item[0].title}</p>
             </Col>
             <Col>
-              <p>Rs {item.price}</p>
+              <p> {item[0].price}</p>
             </Col>
             <Col>
-              <input type="number" min="1" max="5" defaultValue="1" />
-              <Button>Remove</Button>
+              <input type="number" min="1" max="5" value={item.quantity} readOnly/>
+              <Button onClick={onRemoveHandler}>Remove</Button>
             </Col>
           </Row>
         </Container>
@@ -36,7 +44,7 @@ const Cart = (props) => {
   return (
     <div
       style={{
-        "background-color": "white",
+        backgroundColor: "white",
         position: "fixed",
         right: 0,
         border: "1px solid brown",

@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <Navbar
       variant="dark"
-      style={{ height: "80px", "background-color": "aqua" }}
+      style={{ height: "80px", "backgroundColor": "aqua" }}
     >
       <Container>
-        <h1 style={{ "font-size": "40px" }}>The Generics</h1>
+        <h1 style={{ "fontSize": "40px" }}>The Generics</h1>
         <a href="https://www.youtube.com/">
           <FaYoutubeSquare />
         </a>
