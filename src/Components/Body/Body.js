@@ -36,7 +36,7 @@ const Body = (props) => {
 
         <div className="justify-content-between">
           {" "}
-          <span>Rs {item.price}/-</span>
+          <span>Rs {item.price}</span>
           <span>
             {" "}
             <Button onClick={addToCartHandler}>Add to Cart</Button>

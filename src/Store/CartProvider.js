@@ -39,7 +39,7 @@ const cartReducer = (state, action) => {
     //  const itemf= state.cartItems.findIndex((item)=>{return item.title===action.id})
     // const existingCartItem = state.cartItems[itemf]
     const updatedItem = state.cartItems.filter(
-      (item) => item.title != action.id
+      (item) => item[0].title != action.id
     );
     console.log(updatedItem);
     return {
