@@ -4,7 +4,7 @@ import { FaYoutubeSquare, FaSpotify, FaFacebookSquare } from "react-icons/fa";
 const Footer = () => {
   return (
     <div style={{ height: "80px", backgroundColor: "aqua" }}>
-      <Container>
+      <Container style={{display:"flex"}}>
         <h1 style={{ fontSize: "40px" }}>The Generics</h1>
         <a href="https://www.youtube.com/">
           <FaYoutubeSquare />

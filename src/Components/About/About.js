@@ -1,21 +1,22 @@
 import React from "react";
 import Footer from "../Footer/Footer";
 import { Container, Navbar, Nav, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <>
       <Navbar bg="black" variant="dark" style={{ position: "sticky", top: 0 }}>
         <Container className="justify-content-center">
           <Nav activeKey="/home">
-            <Nav.Item>
-              <Nav.Link href="/">Home</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/store">Store</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/about">About</Nav.Link>
-            </Nav.Item>
+          <Nav.Item>
+            <Nav.Link><Link to="/home">Home</Link></Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link ><Link to="/store">Store</Link></Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link ><Link to="/about">About</Link></Nav.Link>
+          </Nav.Item>
           </Nav>
         </Container>
       </Navbar>
@@ -34,7 +35,8 @@ const About = () => {
         <p>
           <Image
             src="https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png"
-            
+            width={"300px"}
+            height={"300px"}
             thumbnail
             roundedCircle
           />
