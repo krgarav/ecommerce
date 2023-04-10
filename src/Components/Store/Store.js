@@ -15,14 +15,12 @@ const Store = () => {
   };
   const target = useRef(null);
   return (
-    
-      <CartProvider>
-        <Header onClick={showCart} />
-        {show && <Cart onClick={closeCart} />}
-        <Body onClick={showCart} />
-        <Footer />
-      </CartProvider>
-   
+    <CartProvider>
+      <Header onClick={showCart} />
+      {show && <Cart onClick={closeCart} />}
+      <Body onClick={showCart} />
+      <Footer />
+    </CartProvider>
   );
 };
 

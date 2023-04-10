@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-
-import { Button, Nav, Navbar, Container, Form } from "react-bootstrap";
+import NavBar from "../NavBar/NavBar";
+import { Button, Form } from "react-bootstrap";
 import CartContext from "../../Store/cart-context";
-import { Link } from "react-router-dom";
 
 const Header = (props) => {
   const cartCtx = useContext(CartContext);
@@ -12,26 +11,14 @@ const Header = (props) => {
   }
 
   return (
-    <Navbar bg="black" variant="dark" style={{ position: "sticky", top: 0 }}>
-      <Container className="justify-content-center">
-        <Nav>
-          <Nav.Item>
-            <Nav.Link><Link to="/home">Home</Link></Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link ><Link to="/store">Store</Link></Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link ><Link to="/about">About</Link></Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Container>
-      <Form>
+    <>
+      <NavBar />
+      <Form style={{ position: "fixed", top: "10px", right: "2px" }}>
         <Button variant="outline-primary" onClick={props.onClick}>
           Cart <span>{totalItems}</span>
         </Button>
       </Form>
-    </Navbar>
+    </>
   );
 };
 

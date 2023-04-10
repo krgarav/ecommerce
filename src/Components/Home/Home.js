@@ -1,12 +1,12 @@
 import React from "react";
 import {
   Container,
-  Navbar,
   Nav,
   Image,
   ListGroup,
   Button,
 } from "react-bootstrap";
+import NavBar from "../NavBar/NavBar"
 import { Link } from "react-router-dom";
 import HomePageItems from "../Items/HomePageItems";
 import Footer from "../Footer/Footer";
@@ -31,27 +31,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar bg="black" variant="dark" style={{ position: "sticky", top: 0 }}>
-        <Container className="justify-content-center">
-          <Nav activeKey="/home">
-            <Nav.Item>
-              <Nav.Link>
-                <Link to="/home">Home</Link>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link>
-                <Link to="/store">Store</Link>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link>
-                <Link to="/about">About</Link>
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Container>
-      </Navbar>
+      <NavBar/>
       <div
         style={{
           backgroundColor: "grey",

@@ -55,8 +55,9 @@ const Cart = (props) => {
         backgroundColor: "white",
         position: "fixed",
         right: 0,
+        bottom: 0,
         border: "1px solid brown",
-        width: "400px",
+        width: "450px",
         height: "550px",
         overflow: "scroll",
       }}
@@ -87,7 +88,7 @@ const Cart = (props) => {
       <ListGroup as="ul">{allItems}</ListGroup>
       <Container className="text-end">
         <h3>
-          Total <span>: Rs  {Total} /-</span>
+          Total <span>: Rs {Total} /-</span>
         </h3>
       </Container>
       <Container className="text-center">
