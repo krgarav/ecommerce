@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Container,
-  Nav,
-  Image,
-  ListGroup,
-  Button,
-} from "react-bootstrap";
-import NavBar from "../NavBar/NavBar"
-import { Link } from "react-router-dom";
+import { ListGroup, Button } from "react-bootstrap";
+import NavBar from "../NavBar/NavBar";
+
 import HomePageItems from "../Items/HomePageItems";
 import Footer from "../Footer/Footer";
 const Home = () => {
@@ -31,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <div
         style={{
           backgroundColor: "grey",
@@ -75,7 +69,7 @@ const Home = () => {
           <ListGroup variant="info">{homeItems}</ListGroup>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

@@ -25,7 +25,6 @@ const Contact = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
     namerRef.current.value = "";
     emailRef.current.value = "";
     phoneRef.current.value = "";

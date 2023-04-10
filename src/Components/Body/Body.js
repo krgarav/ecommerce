@@ -11,20 +11,21 @@ import {
   Nav,
 } from "react-bootstrap";
 import CartContext from "../../Store/cart-context";
+import { Link } from "react-router-dom";
 const Body = (props) => {
   const cartCtx = useContext(CartContext);
 
-
   const addToCartHandler = (event) => {
-    const title=event.target.parentNode.parentNode.parentNode.children[0].innerText;
+    const title =
+      event.target.parentNode.parentNode.parentNode.children[0].innerText;
     const url = event.target.parentNode.parentNode.parentNode.children[1].src;
     const Price = event.target.parentNode.parentNode.children[0].innerText;
 
-    const imgObj={
+    const imgObj = {
       title: title,
-      url:url,
-      price:Price
-    }
+      url: url,
+      price: Price,
+    };
     cartCtx.addToCartItems(imgObj);
   };
   const items = Items.map((item) => {
@@ -32,7 +33,9 @@ const Body = (props) => {
       <Col key={item.title} xl={6}>
         <h1>{item.title}</h1>
 
-        <Image src={item.imageUrl} />
+        <Link to={`/store/${item.title}`}>
+          <Image src={item.imageUrl} />
+        </Link>
 
         <div className="justify-content-between">
           {" "}

@@ -1,19 +1,24 @@
 import React from "react";
 import "./App.css";
 import About from "./Components/About/About";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Store from "./Components/Store/Store";
 import Home from "./Components/Home/Home";
 import Contact from "./Components/Contact/Contact";
-const router = createBrowserRouter([
-  { path: "/about", element: <About /> },
-  { path: "/home", element: <Home /> },
-  { path: "/store", element: <Store /> },
-  { path: "/", element: <Store /> },
-  { path: "/contact", element: <Contact /> }
-]);
+import { Route, Routes, Navigate } from "react-router-dom";
+import Product from "./Components/Product/Product";
+
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate to="/store" replace />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/store" element={<Store />} />
+      <Route path="/contact" element={<Contact />} />
+      {/* <Route path="/product" element={<Product />} /> */}
+      <Route path="/store/:productId/" element={<Product />} />
+    </Routes>
+  );
 };
 
 export default App;
