@@ -21,12 +21,13 @@ const Body = (props) => {
     const url =
       event.target.parentNode.parentNode.parentNode.children[1].firstChild.src;
     const Price = event.target.parentNode.parentNode.children[0].innerText;
-    console.log();
+    
     const imgObj = {
       title: title,
       url: url,
       price: Price,
     };
+   
     cartCtx.addToCartItems(imgObj);
   };
   const items = Items.map((item) => {

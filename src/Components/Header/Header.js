@@ -6,6 +6,7 @@ import CartContext from "../../Store/cart-context";
 const Header = (props) => {
   const cartCtx = useContext(CartContext);
   let totalItems = 0;
+  console.log(cartCtx.cartItems);
   for (let i = 0; i < cartCtx.cartItems.length; i++) {
     totalItems += cartCtx.cartItems[i].quantity;
   }

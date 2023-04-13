@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(authCtx.isLoggedIn);
   const logoutHandler = () => {
-    console.log("logout clicked")
+    console.log("logout clicked");
     alert("Are you sure ,you want to logout?");
     authCtx.logout();
     navigate("/login", { replace: true });

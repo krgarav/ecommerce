@@ -34,6 +34,7 @@ const LoginForm = () => {
           throw data.error;
         }
         authCtx.login(data.idToken);
+        localStorage.setItem("mail",data.email)
         alert("Logged In");
         navigate("/store", { replace: true });
       } catch (error) {

@@ -19,11 +19,12 @@ const Cart = (props) => {
       event.target.parentNode.parentNode.firstChild.children[1].innerText;
     cartCtx.removeFromCartItems(title);
   };
+  console.log(cartCtx.cartItems);
   const allItems = cartCtx.cartItems.map((item) => {
     Total += item.quantity * +item[0].price.split(" ")[1];
-// console.log(item[0])
+    // console.log(item[0])
     return (
-      <ListGroup.Item>
+      <ListGroup.Item key={item[0].title}>
         <Container>
           <Row>
             <Col>

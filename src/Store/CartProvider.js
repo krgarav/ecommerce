@@ -1,19 +1,18 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext, useEffect, useState } from "react";
 import CartContext from "./cart-context";
-const defaultCartState = { cartItems: [], quantity: 0 };
+import AuthContext from "./auth-context";
+
+let defaultCartState = { cartItems: [], quantity: 0 };
+
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-  
     const existingItemIndex = state.cartItems.findIndex((item) => {
-   
       return item[0].title === action.item.title;
     });
-   
+
     const existingItem = state.cartItems[existingItemIndex];
     let updatedItem = [];
     if (existingItem) {
-      // console.log("Item Exist")
-      console.log()
       const updateItem = {
         ...existingItem,
         quantity: existingItem.quantity + 1,
@@ -21,39 +20,89 @@ const cartReducer = (state, action) => {
       updatedItem = [...state.cartItems];
 
       updatedItem[existingItemIndex] = updateItem;
-    
     } else {
-     
-      const newItem ={
-       ...[action.item],
-        quantity:1
-      }
+      const newItem = {
+        ...[action.item],
+        quantity: 1,
+      };
       updatedItem = state.cartItems.concat(newItem);
     }
+
+    const mailId = localStorage.getItem("mail");
+    const mail = mailId.replace(/@|\./g, "");
+
+    const response = fetch(
+      "https://ecommerse-f1258-default-rtdb.firebaseio.com/" + mail + ".json",
+      {
+        method: "POST",
+        body: JSON.stringify(updatedItem),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     return {
       cartItems: updatedItem,
     };
   }
   if (action.type === "REMOVE") {
-    //  const itemf= state.cartItems.findIndex((item)=>{return item.title===action.id})
-    // const existingCartItem = state.cartItems[itemf]
     const updatedItem = state.cartItems.filter(
       (item) => item[0].title != action.id
     );
-    console.log(updatedItem);
+    const mailId = localStorage.getItem("mail");
+    const mail = mailId.replace(/@|\./g, "");
+
+    const response = fetch(
+      "https://ecommerse-f1258-default-rtdb.firebaseio.com/" + mail + ".json",
+      {
+        method: "POST",
+        body: JSON.stringify(updatedItem),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     return {
       cartItems: updatedItem,
     };
+  }
+  if (action.type === "LOAD") {
+    const item = action.item;
+    const updatedItem = action.item;
+
+    return { cartItems: updatedItem };
   }
   return defaultCartState;
 };
 
 const CartProvider = (props) => {
+  const authCtx = useContext(AuthContext);
+  useEffect(() => {
+    const fetchData = async () => {
+      const mailId = localStorage.getItem("mail");
+      const mail = mailId.replace(/@|\./g, "");
+      const response = await fetch(
+        "https://ecommerse-f1258-default-rtdb.firebaseio.com/" + mail + ".json"
+      );
+      const data = await response.json();
+
+      const dat = await data;
+
+      const length = Object.keys(data).length;
+      const items = Object.entries(data)[length - 1];
+
+      // console.log(items[1]);
+      dispatchCartState({ type: "LOAD", item: items[1] });
+    };
+    fetchData();
+  }, []);
+
   const [cartState, dispatchCartState] = useReducer(
     cartReducer,
     defaultCartState
   );
+
   const addToCartItemsHandler = (item) => {
     dispatchCartState({ type: "ADD", item: item });
   };
