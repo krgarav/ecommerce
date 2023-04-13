@@ -2,6 +2,7 @@ import React, { useRef, useState, useContext } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import AuthContext from "../../Store/auth-context";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 const LoginForm = () => {
   const [login, setLogin] = useState(true);
   const authCtx = useContext(AuthContext);
@@ -68,6 +69,7 @@ const LoginForm = () => {
   };
   return (
     <>
+    <NavBar/>
       <div
         style={{
           backgroundColor: "grey",

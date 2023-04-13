@@ -13,11 +13,14 @@ const App = () => {
   const authCtx = useContext(AuthContext);
   return (
     <Routes>
-     {<Route path="/" element={<LoginForm />} />} 
+      <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/home" element={<Home />} />
-       <Route path="/store" element={<Store />} />
+     {authCtx.isLoggedIn &&<Route path="/store" element={<Store />} />}
+     {!authCtx.isLoggedIn &&<Route path="/store" element={<LoginForm />} />}
       <Route path="/contact" element={<Contact />} />
+      <Route path="/login" element={<LoginForm />} />
+
       <Route path="/store/:productId/" element={<Product />} />
     </Routes>
   );

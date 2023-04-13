@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
-import { Nav, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar, Container, Button } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../Store/auth-context";
+import { useNavigate } from "react-router-dom";
 const NavBar = () => {
   const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
   console.log(authCtx.isLoggedIn);
+  const logoutHandler = () => {
+    console.log("logout clicked")
+    alert("Are you sure ,you want to logout?");
+    authCtx.logout();
+    navigate("/login", { replace: true });
+  };
   return (
     <Navbar
       bg="black"
@@ -19,7 +27,10 @@ const NavBar = () => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={NavLink} to="/store">
+            <Nav.Link
+              as={NavLink}
+              to={authCtx.isLoggedIn ? "/store" : "/login"}
+            >
               Store
             </Nav.Link>
           </Nav.Item>
@@ -35,9 +46,12 @@ const NavBar = () => {
           </Nav.Item>
           <Nav.Item>
             {!authCtx.isLoggedIn && (
-              <Nav.Link as={NavLink} to="/">
+              <Nav.Link as={NavLink} to="/login">
                 Login
               </Nav.Link>
+            )}
+            {authCtx.isLoggedIn && (
+              <Button onClick={logoutHandler}> Logout</Button>
             )}
           </Nav.Item>
         </Nav>
