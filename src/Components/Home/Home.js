@@ -8,6 +8,7 @@ const Home = () => {
   const homeItems = HomePageItems.map((item) => {
     return (
       <ListGroup.Item
+        key={item.date}
         style={{
           display: "flex",
           width: "80%",

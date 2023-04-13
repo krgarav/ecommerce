@@ -11,14 +11,14 @@ const Header = (props) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <NavBar />
-      <Form style={{ position: "fixed", top: "10px", right: "2px" }}>
+      <Form style={{ position: "absolute", top: "8px", right: "5px" }}>
         <Button variant="outline-primary" onClick={props.onClick}>
           Cart <span>{totalItems}</span>
         </Button>
       </Form>
-    </>
+    </React.Fragment>
   );
 };
 

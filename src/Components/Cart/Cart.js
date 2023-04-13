@@ -21,7 +21,7 @@ const Cart = (props) => {
   };
   const allItems = cartCtx.cartItems.map((item) => {
     Total += item.quantity * +item[0].price.split(" ")[1];
-
+// console.log(item[0])
     return (
       <ListGroup.Item>
         <Container>
