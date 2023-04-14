@@ -19,10 +19,18 @@ const Cart = (props) => {
       event.target.parentNode.parentNode.firstChild.children[1].innerText;
     cartCtx.removeFromCartItems(title);
   };
-  console.log(cartCtx.cartItems);
+  const purchaseHandler = () => {
+
+    if(cartCtx.cartItems.length>0){
+    alert("Thanks for purchase");
+    cartCtx.resetCartItems();
+    }else{
+      alert("No Items Present In Cart")
+    }
+  };
   const allItems = cartCtx.cartItems.map((item) => {
     Total += item.quantity * +item[0].price.split(" ")[1];
-    // console.log(item[0])
+
     return (
       <ListGroup.Item key={item[0].title}>
         <Container>
@@ -42,7 +50,9 @@ const Cart = (props) => {
                 value={item.quantity}
                 readOnly
               />
-              <Button onClick={onRemoveHandler}>Remove</Button>
+              <Button variant="danger" onClick={onRemoveHandler}>
+                Remove
+              </Button>
             </Col>
           </Row>
         </Container>
@@ -56,7 +66,7 @@ const Cart = (props) => {
         backgroundColor: "white",
         position: "fixed",
         right: 0,
-        bottom: 0,
+        top: "60px",
         border: "1px solid brown",
         width: "450px",
         height: "550px",
@@ -93,7 +103,7 @@ const Cart = (props) => {
         </h3>
       </Container>
       <Container className="text-center">
-        <Button>PURCHASE</Button>
+        <Button onClick={purchaseHandler}>PURCHASE</Button>
       </Container>
     </div>
   );

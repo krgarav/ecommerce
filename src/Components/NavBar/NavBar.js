@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Nav, Navbar, Container, Button } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AuthContext from "../../Store/auth-context";
 import { useNavigate } from "react-router-dom";
 const NavBar = () => {
@@ -8,7 +8,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const logoutHandler = () => {
     console.log("logout clicked");
-    alert("Are you sure ,you want to logout?");
+    alert("Are you sure you want to logout?");
     authCtx.logout();
     navigate("/login", { replace: true });
   };
@@ -16,7 +16,7 @@ const NavBar = () => {
     <Navbar
       bg="black"
       variant="dark"
-      style={{ position: "sticky", top: 0, height: "50px" }}
+      style={{ position: "sticky", top: 0, height: "50px" ,zIndex:"1"}}
     >
       <Container className="justify-content-center">
         <Nav>

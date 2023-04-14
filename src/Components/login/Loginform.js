@@ -57,7 +57,10 @@ const LoginForm = () => {
         if (data.error) {
           throw data.error;
         }
-        alert("success");
+        alert("Account Creation Successfull");
+        navigate("/login",{replace:"true"})
+        passwordRef.current.value=""
+        emailRef.current.value=""
       } catch (error) {
         alert(error.message);
       }
