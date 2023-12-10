@@ -71,6 +71,7 @@ const Cart = (props) => {
         width: "450px",
         height: "550px",
         overflow: "scroll",
+        zIndex:"999"
       }}
     >
       <Container className="text-end">

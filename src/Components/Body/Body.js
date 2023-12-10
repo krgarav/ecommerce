@@ -3,6 +3,7 @@ import Items from "../Items/Items";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import CartContext from "../../Store/cart-context";
 import { Link } from "react-router-dom";
+import Cardbox from "../Cardbox/Cardbox";
 const Body = (props) => {
   const cartCtx = useContext(CartContext);
 
@@ -23,21 +24,24 @@ const Body = (props) => {
   };
   const items = Items.map((item) => {
     return (
+      // <Col key={item.title} xl={6}>
+      //   <h1>{item.title}</h1>
+
+      //   <Link to={`/store/${item.title}`}>
+      //     <Image src={item.imageUrl} />
+      //   </Link>
+
+      //   <div className="justify-content-between">
+      //     {" "}
+      //     <span>Rs {item.price}</span>
+      //     <span>
+      //       {" "}
+      //       <Button onClick={addToCartHandler}>Add to Cart</Button>
+      //     </span>
+      //   </div>
+      // </Col>
       <Col key={item.title} xl={6}>
-        <h1>{item.title}</h1>
-
-        <Link to={`/store/${item.title}`}>
-          <Image src={item.imageUrl} />
-        </Link>
-
-        <div className="justify-content-between">
-          {" "}
-          <span>Rs {item.price}</span>
-          <span>
-            {" "}
-            <Button onClick={addToCartHandler}>Add to Cart</Button>
-          </span>
-        </div>
+        <Cardbox title={item.title} imgurl={item.imageUrl} price={item.price} />
       </Col>
     );
   });
@@ -55,7 +59,7 @@ const Body = (props) => {
         <h1 style={{ fontSize: "80px" }}>The Generics</h1>
       </div>
 
-      <Container className="text-center">
+      <Container style={{textAlign:"center",display:"flex", justifyContent:"center",alignContent:"center",backgroundColor:"blue",alignItems:"center",alignSelf:"center"}}>
         <Row>{items}</Row>
       </Container>
       <Container style={{ margin: "20px auto" }} className="text-center">

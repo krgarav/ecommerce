@@ -8,10 +8,7 @@ const Product = () => {
   const item = Items.filter((item) => {
     return item.title === params.productId;
   });
-  console.log(item);
-  // for(let key in Items){
-  //     console.log(Items[key].title)
-  // }
+ 
   return (<>
   
     <div style={{ display: "flex" }}>
