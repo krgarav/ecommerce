@@ -1,0 +1,52 @@
+.container{
+    width:50vw;
+    padding: 2% 5%;
+    margin: 10px auto;
+}
+.title{
+    background-color: grey;
+    height:min-content;
+    text-align: center;
+}
+.title h1{
+    font-size: 5.2rem;
+}
+
+/* Media query for screens smaller than 600px (e.g., smartphones) */
+@media (max-width: 600px) {
+    .stars span {
+      font-size: 16px; /* Adjust the size of the star for smaller screens */
+    }
+    .container{
+        width:80vw;
+        padding: 2% 5%;
+        margin: 10px auto;
+    }
+    .title h1{
+        font-size: 4.8rem;
+    }
+  }
+  
+  /* Media query for screens between 601px and 768px (e.g., larger smartphones and small tablets) */
+  @media (min-width: 601px) and (max-width: 768px) {
+    .container{
+        width:80vw;
+        padding: 2% 5%;
+        margin: 10px auto;
+    }
+  }
+  
+  /* Media query for screens between 769px and 1024px (e.g., tablets and smaller desktops) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+  
+  }
+  
+  /* Media query for screens between 1025px and 1200px (e.g., larger desktops and small laptops) */
+  @media (min-width: 1025px) and (max-width: 1200px) {
+   
+  }
+  
+  /* Media query for screens larger than 1200px (e.g., larger laptops and desktops) */
+  @media (min-width: 1201px) {
+   
+  }

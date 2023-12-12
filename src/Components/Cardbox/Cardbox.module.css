@@ -1,0 +1,42 @@
+.spantag{
+    display: flex;
+}
+
+.crossed{
+    text-decoration: line-through;
+    color: green;
+    font-size: 0.8rem;
+}
+.stars{
+    color: yellow;
+
+}
+.stars span {
+    display: inline-block;
+    font-size: 24px; /* Adjust the size of the star */
+    margin: 0 2px; /* Adjust margin for spacing between stars */
+    position: relative;
+  }
+  
+  .stars span:before {
+    content: '★';
+    position: absolute;
+    color: white; /* White color for the star's fill */
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .stars span:after {
+    content: '★';
+    color: black; /* Black color for the star's border */
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* z-index: -1; Place the border behind the filled star */
+  }

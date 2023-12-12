@@ -4,6 +4,7 @@ import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import CartContext from "../../Store/cart-context";
 import { Link } from "react-router-dom";
 import Cardbox from "../Cardbox/Cardbox";
+import classes from "./Body.module.css";
 const Body = (props) => {
   const cartCtx = useContext(CartContext);
 
@@ -40,28 +41,22 @@ const Body = (props) => {
       //     </span>
       //   </div>
       // </Col>
-      <Col key={item.title} xl={6}>
+      <Col key={item.title} lg={3}>
+      
         <Cardbox title={item.title} imgurl={item.imageUrl} price={item.price} />
-      </Col>
+       </Col>
     );
   });
 
   return (
     <>
-      <div
-        style={{
-          backgroundColor: "grey",
-          height: "150px",
-          textAlign: "center",
-          fontSize: "20px",
-        }}
-      >
-        <h1 style={{ fontSize: "80px" }}>The Generics</h1>
+      
+      <div className={classes.title}>
+        <h1 >The Generics</h1>
       </div>
-
-      <Container style={{textAlign:"center",display:"flex", justifyContent:"center",alignContent:"center",backgroundColor:"blue",alignItems:"center",alignSelf:"center"}}>
+      <div className={classes.container}>
         <Row>{items}</Row>
-      </Container>
+      </div>
       <Container style={{ margin: "20px auto" }} className="text-center">
         <Button variant="dark" onClick={props.onClick}>
           See the cart

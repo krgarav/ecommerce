@@ -3,6 +3,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import AuthContext from "../../Store/auth-context";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+import classes from "./login.module.css";
 const LoginForm = () => {
   const [login, setLogin] = useState(true);
   const authCtx = useContext(AuthContext);
@@ -34,8 +35,7 @@ const LoginForm = () => {
           throw data.error;
         }
         authCtx.login(data.idToken);
-        localStorage.setItem("mail",data.email)
-        alert("Logged In");
+        localStorage.setItem("mail", data.email);
         navigate("/store", { replace: true });
       } catch (error) {
         alert(error.message);
@@ -58,9 +58,9 @@ const LoginForm = () => {
           throw data.error;
         }
         alert("Account Creation Successfull");
-        navigate("/login",{replace:"true"})
-        passwordRef.current.value=""
-        emailRef.current.value=""
+        navigate("/login", { replace: "true" });
+        passwordRef.current.value = "";
+        emailRef.current.value = "";
       } catch (error) {
         alert(error.message);
       }
@@ -73,20 +73,18 @@ const LoginForm = () => {
   };
   return (
     <>
-    <NavBar/>
-      <div
-        style={{
-          backgroundColor: "grey",
-          height: "150px",
-          textAlign: "center",
-          fontSize: "20px",
-        }}
-      >
-        <h1 style={{ fontSize: "80px" }}>The Generics</h1>
+      <NavBar />
+      <div className={classes.title}>
+        <h1 >The Generics</h1>
       </div>
       <br />
-      <Container
-        style={{ width: "70%", backgroundColor: "teal", borderRadius: "10px" }}
+      <div
+        className={classes.container}
+        style={{
+          padding: "2% 5%",
+          backgroundColor: "teal",
+          borderRadius: "10px",
+        }}
       >
         <Form onSubmit={submitHandler} className="text-center">
           <Form.Group>
@@ -115,13 +113,14 @@ const LoginForm = () => {
           <Button variant="warning" type="submit">
             {login ? "Login" : "Create Account"}
           </Button>
-          <Form.Group>
-            <Button onClick={toggleHandler}>
-              {login ? "Create new Account" : "Login with existing account"}
-            </Button>
-          </Form.Group>
+          <hr />
+          {/* <Form.Group> */}
+          <Button onClick={toggleHandler}>
+            {login ? "Create new Account" : "Login with existing account"}
+          </Button>
+          {/* </Form.Group> */}
         </Form>
-      </Container>
+      </div>
     </>
   );
 };
