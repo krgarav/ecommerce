@@ -3,19 +3,13 @@ import Footer from "../Footer/Footer";
 import { Container, Navbar, Nav, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+import classes from "./About.module.css";
 const About = () => {
   return (
     <>
       <NavBar />
-      <div
-        style={{
-          backgroundColor: "grey",
-          height: "150px",
-          textAlign: "center",
-          fontSize: "20px",
-        }}
-      >
-        <h1 style={{ fontSize: "80px" }}>The Generics</h1>
+      <div className={classes.title}>
+        <h1 >The Generics</h1>
       </div>
       <Container className="text-center">
         <h3>About</h3>

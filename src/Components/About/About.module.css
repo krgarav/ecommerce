@@ -1,0 +1,8 @@
+.title{
+    background-color: grey;
+    height:min-content;
+    text-align: center;
+}
+.title h1{
+    font-size: 5.2rem;
+}

@@ -41,8 +41,7 @@ const Body = (props) => {
       //     </span>
       //   </div>
       // </Col>
-      <Col key={item.title} lg={3}>
-      
+      <Col key={item.title} xs={12} md={4} lg={3}>
         <Cardbox title={item.title} imgurl={item.imageUrl} price={item.price} />
        </Col>
     );

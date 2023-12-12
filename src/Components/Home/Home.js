@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 
 import HomePageItems from "../Items/HomePageItems";
 import Footer from "../Footer/Footer";
+import classes from "./Home.module.css";
 const Home = () => {
   const homeItems = HomePageItems.map((item) => {
     return (
@@ -28,6 +29,7 @@ const Home = () => {
     <>
       <NavBar />
       <div
+      className=""
         style={{
           backgroundColor: "grey",
           height: "300px",
@@ -35,6 +37,9 @@ const Home = () => {
           fontSize: "20px",
         }}
       >
+
+
+
         <h1 style={{ fontSize: "80px" }}>The Generics</h1>
         <div
           style={{
@@ -45,6 +50,7 @@ const Home = () => {
             marginRight: "auto",
           }}
         >
+
           <h3 style={{ textAlign: "center", justifyContent: "center" }}>
             Get Our Latest Album
           </h3>

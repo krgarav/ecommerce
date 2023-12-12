@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Button, Container, Navbar, Row, Col } from "react-bootstrap";
 import { FaYoutubeSquare, FaSpotify, FaFacebookSquare } from "react-icons/fa";
+import classes from "./Footer.module.css";
 const Footer = () => {
   return (
-    <div style={{ height: "80px", backgroundColor: "aqua" }}>
+    <div className={classes.mainpage}>
       <Container >
         <Row>
           <Col>
