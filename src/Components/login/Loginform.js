@@ -4,12 +4,16 @@ import AuthContext from "../../Store/auth-context";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import classes from "./login.module.css";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { useToast } from "../../Store/ToastContext";
 const LoginForm = () => {
   const [login, setLogin] = useState(true);
   const authCtx = useContext(AuthContext);
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const submitHandler = async (event) => {
     event.preventDefault();
     const obj = {
@@ -35,6 +39,11 @@ const LoginForm = () => {
           throw data.error;
         }
         authCtx.login(data.idToken);
+        // alert("logged In")
+        // toast.success("Logged In successfully !", {
+        //   position: toast.POSITION.TOP_CENTER
+        // });
+        showToast()
         localStorage.setItem("mail", data.email);
         navigate("/store", { replace: true });
       } catch (error) {
@@ -74,6 +83,7 @@ const LoginForm = () => {
   return (
     <>
       <NavBar />
+     
       <div className={classes.title}>
         <h1 >The Generics</h1>
       </div>

@@ -7,20 +7,20 @@ const Footer = () => {
     <div className={classes.mainpage}>
       <Container >
         <Row>
-          <Col>
-            <h1 style={{ fontSize: "40px" }}>The Generics</h1>
+          <Col className={classes.footertext}>
+            <h1 >The Generics</h1>
           </Col>
 
-          <Col style={{display:"flex",justifyContent:"space-between"}}>
+          <Col className={classes.iconcontainer} style={{display:"flex",justifyContent:"space-evenly"}}>
             {" "}
             <a href="https://www.youtube.com/">
-              <FaYoutubeSquare />
+              <FaYoutubeSquare className={classes.icons} />
             </a>
             <a href="https://open.spotify.com/">
-              <FaSpotify />
+              <FaSpotify className={classes.icons} />
             </a>
             <a href="https://www.facebook.com/">
-              <FaFacebookSquare />
+              <FaFacebookSquare className={classes.icons} />
             </a>
           </Col>
         </Row>

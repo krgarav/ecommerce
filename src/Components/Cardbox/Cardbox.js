@@ -1,15 +1,17 @@
-import { useContext } from "react";
-import { Button, Card } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Button, Card, Spinner } from "react-bootstrap";
 import classes from "./Cardbox.module.css";
 import CartContext from "../../Store/cart-context";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cardbox = (props) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const cartCtx = useContext(CartContext);
   const navigate = useNavigate();
 
   const imgHandler = (title) => {
-   
     navigate(`/store/${title}`);
   };
   const clickHandler = (event) => {
@@ -23,14 +25,55 @@ const Cardbox = (props) => {
       url: url,
       price: Price,
     };
+    let customId = "custom-id-yes";
+    toast.success(`Added ${title} to cart !!!`, {
+      position: toast.POSITION.TOP_CENTER,
+      toastId: customId,
+    });
+    if (customId === "custom-id-yes") {
+      toast.update(customId, {
+        render: `Added ${title} to cart !!!`,
+        type: toast.TYPE.SUCCESS,
+        autoClose: 5000,
+      });
+    }
     cartCtx.addToCartItems(imgObj);
     event.stopPropagation();
   };
+
+  const handleImageLoad = () => {
+    console.log("trigerred");
+    setImageLoaded(true);
+  };
   // const rating = props.rating;
+  console.log(imageLoaded);
   return (
     <>
-      <Card onClick={()=>imgHandler(props.title)} style={{ width: "100%",margin:"20px auto",padding:"10px 10px" }}>
-        <Card.Img src={props.imgurl} variant="top" />
+      <ToastContainer />
+      <Card
+        onClick={() => imgHandler(props.title)}
+        style={{ width: "100%", margin: "20px auto", padding: "10px 10px" }}
+      >
+        {!imageLoaded && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "200px",
+            }}
+          >
+            <Spinner animation="border" variant="primary" />
+          </div>
+        )}
+
+        <Card.Img
+          src={props.imgurl}
+          variant="top"
+          onLoad={handleImageLoad}
+          style={{ display: imageLoaded ? "block" : "none" }}
+        />
+
         <div>
           <h3>{props.title}</h3>
           <div className={classes.spantag}>

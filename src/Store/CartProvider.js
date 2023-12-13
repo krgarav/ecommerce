@@ -192,11 +192,13 @@ const CartProvider = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const mailId = localStorage.getItem("mail");
+      if(mailId){
       const mail = mailId.replace(/@|\./g, "");
       const response = await fetch(
         "https://ecommerse-f1258-default-rtdb.firebaseio.com/" + mail + ".json"
       );
       const data = await response.json();
+      if(data){
       const keyGot = Object.keys(data)[0];
       key = keyGot;
       console.log(keyGot);
@@ -204,7 +206,10 @@ const CartProvider = (props) => {
       const items = Object.entries(data)[length - 1];
       if (items[1]) {
         dispatchCartState({ type: "LOAD", item: items[1] });
+        console.log(items[1])
       }
+    }
+    }
     };
     fetchData();
   }, []);

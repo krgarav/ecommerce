@@ -9,24 +9,26 @@ const About = () => {
     <>
       <NavBar />
       <div className={classes.title}>
-        <h1 >The Generics</h1>
+        <h1>The Generics</h1>
       </div>
       <Container className="text-center">
         <h3>About</h3>
-        <p>
+        <div style={{ overflow: "hidden", minHeight: "50vh" }}>
           <Image
             src="https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png"
-            width={"300px"}
-            height={"300px"}
+            width="200px"
+            height="200px"
+            alt="sample text"
             thumbnail
             roundedCircle
+            style={{ float: "left", marginRight: "10px" }}
           />
-          <p>
+          <p style={{ textAlign: "justify" }}>
             Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
             sorrows, hates no prosecutors will unfold in the enduring of which
             were born in it? Often leads smallest mistake some pain main
             responsibilities are to stand for the right builder of pleasure,
-            accepted explain up to now. , The things we are accusing of these in
+            accepted explain up to now. The things we are accusing of these in
             the explication of the truth receives from the flattery of her will
             never be the trouble and they are refused to the pleasures and the
             pleasures of the pain, explain the treatment of excepturi of the
@@ -44,9 +46,19 @@ const About = () => {
             often not at once take the hardships of the life of harsh condemn,
             we are accusing him? Him whom something large cisterns.
           </p>
-        </p>
+        </div>
       </Container>
-      <Footer />
+      <div
+        style={{
+          position: "relative",
+          left: "0",
+          width: "100%",
+          margin: "0",
+          padding: "0",
+        }}
+      >
+        <Footer />
+      </div>
     </>
   );
 };

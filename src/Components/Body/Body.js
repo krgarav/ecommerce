@@ -1,13 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Items from "../Items/Items";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import CartContext from "../../Store/cart-context";
 import { Link } from "react-router-dom";
 import Cardbox from "../Cardbox/Cardbox";
 import classes from "./Body.module.css";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 const Body = (props) => {
   const cartCtx = useContext(CartContext);
-
+// useEffect(()=>{
+//   toast.success("Success Notification !", {
+//     position: toast.POSITION.TOP_CENTER
+//   });
+// },[])
   const addToCartHandler = (event) => {
     const title =
       event.target.parentNode.parentNode.parentNode.children[0].innerText;
@@ -49,7 +55,7 @@ const Body = (props) => {
 
   return (
     <>
-      
+      <ToastContainer />
       <div className={classes.title}>
         <h1 >The Generics</h1>
       </div>

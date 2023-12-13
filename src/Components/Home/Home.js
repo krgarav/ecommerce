@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, Button } from "react-bootstrap";
+import { ListGroup, Button, Row, Col } from "react-bootstrap";
 import NavBar from "../NavBar/NavBar";
 
 import HomePageItems from "../Items/HomePageItems";
@@ -8,39 +8,45 @@ import classes from "./Home.module.css";
 const Home = () => {
   const homeItems = HomePageItems.map((item) => {
     return (
-      <ListGroup.Item
-        key={item.date}
-        style={{
-          display: "flex",
-          width: "80%",
-          justifyContent: "space-between",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <h3>{item.date}</h3> <p>{item.location}</p>
-        <p>{item.stage}</p>
-        <Button>Buy Tickets</Button>
+      <ListGroup.Item className={classes.Listgroup} key={item.key}>
+        <Row className={classes.Rows}>
+          <Col className={classes.Cols} xs={3}>
+            <h3>{item.date}</h3>
+          </Col>
+          <Col className={classes.Cols} xs={3}>
+            <p>{item.location}</p>
+          </Col>
+
+          <Col className={classes.Cols} xs={3}>
+            <p>{item.stage}</p>
+          </Col>
+          <Col className={classes.btn} xs={3}>
+            <Button>Buy Tickets</Button>
+          </Col>
+        </Row>
       </ListGroup.Item>
+      // <ListGroup.Item
+      //   key={item.date}
+      //   style={{
+      //     display: "flex",
+      //     width: "80%",
+      //     justifyContent: "space-between",
+      //     marginLeft: "auto",
+      //     marginRight: "auto",
+      //   }}
+      // >
+      //   <h3>{item.date}</h3> <p>{item.location}</p>
+      //   <p>{item.stage}</p>
+      //   <Button>Buy Tickets</Button>
+      // </ListGroup.Item>
     );
   });
 
   return (
     <>
       <NavBar />
-      <div
-      className=""
-        style={{
-          backgroundColor: "grey",
-          height: "300px",
-          textAlign: "center",
-          fontSize: "20px",
-        }}
-      >
-
-
-
-        <h1 style={{ fontSize: "80px" }}>The Generics</h1>
+      <div className={classes.homepage}>
+        <h1>The Generics</h1>
         <div
           style={{
             width: "300px",
@@ -50,7 +56,6 @@ const Home = () => {
             marginRight: "auto",
           }}
         >
-
           <h3 style={{ textAlign: "center", justifyContent: "center" }}>
             Get Our Latest Album
           </h3>

@@ -1,0 +1,27 @@
+.homepage{
+    background-color: gray;
+    text-align: center;
+    height: 300px;
+}
+.homepage h1{
+    font-size: 5.0rem;
+    margin: 0;
+}
+.Listgroup{
+    width: 90%;
+    margin:5px auto;
+}
+.Rows{
+    display: flex;
+    text-align: start;
+}
+.Cols h3{
+    text-align: start;
+}
+.Cols {
+    margin: 0;
+    padding: 0px;
+}
+.btn{
+    text-align: end;
+}
